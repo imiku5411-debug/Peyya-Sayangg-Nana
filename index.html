@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>buat kamu 💗</title>
+
+<style>
+body {
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  font-family:sans-serif;
+  background:linear-gradient(to right,#e6d6ff,#f3e6ff);
+  overflow:hidden;
+}
+
+/* tulip jatuh */
+.tulip {
+  position:absolute;
+  top:-50px;
+  font-size:24px;
+  animation: fall linear infinite;
+  opacity:0.7;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+.card {
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  max-width:300px;
+  position:relative;
+  z-index:2;
+}
+
+button {
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  background:#cba6ff;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>hai kamu...</h2>
+  <p id="text">aku mau ngomong bentar ya</p>
+  <button onclick="next()">klik pelan-pelan 💗</button>
+</div>
+
+<script>
+// teks
+let step = 0;
+
+function next() {
+  let t = document.getElementById("text");
+
+  if(step==0){
+    t.innerHTML="maaf ya kemarin aku sempet cuekin kamu...";
+  }
+  else if(step==1){
+    t.innerHTML="aku jujur nyesel banget 😔";
+  }
+  else if(step==2){
+    t.innerHTML="aku ga maksud bikin kamu ngerasa diabaikan...";
+  }
+  else if(step==3){
+    t.innerHTML="aku juga ga tau kenapa aku bisa gitu kemarin...";
+  }
+  else if(step==4){
+    t.innerHTML="tapi aku tau itu salah aku...";
+  }
+  else if(step==5){
+    t.innerHTML="kalau kamu jadi berubah sekarang, aku ngerti kok 😔";
+  }
+  else if(step==6){
+    t.innerHTML="jujur aku kepikiran terus dari tadi pagi...";
+  }
+  else if(step==7){
+    t.innerHTML="aku kangen kamu yang kemarin...";
+  }
+  else if(step==8){
+    t.innerHTML="kalau kamu masih mau, kita baikan ya... 💗";
+  }
+  else{
+    t.innerHTML="aku tunggu kamu, beneran...";
+  }
+
+  step++;
+}
+
+// generate tulip jatuh
+function createTulip() {
+  const tulip = document.createElement("div");
+  tulip.classList.add("tulip");
+  tulip.innerHTML = "🌷";
+
+  tulip.style.left = Math.random() * 100 + "vw";
+  tulip.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+  document.body.appendChild(tulip);
+
+  setTimeout(() => {
+    tulip.remove();
+  }, 6000);
+}
+
+setInterval(createTulip, 400);
+</script>
+
+</body>
+</html>
